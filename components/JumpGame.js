@@ -33,8 +33,8 @@ export default function JumpGame() {
     const a = soundRef.current;
     if (!a) return;
     try {
-      const c = a.cloneNode(); // clone so rapid taps can overlap
-      c.play().catch(() => {});
+      a.currentTime = 0; // restart on every jump (clip is long, so no overlapping)
+      a.play().catch(() => {});
     } catch (e) {}
   }
 
