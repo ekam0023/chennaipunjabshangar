@@ -22,7 +22,7 @@ export default function JumpGame() {
   const loadedRef = useRef(false);
   const soundRef = useRef(null);
 
-  // jump sound: put your voice in public/jump.mp3 (silently skipped if the file is missing)
+  // jump sound: 1.5s clip in public/jump.mp3 (silently skipped if the file is missing)
   useEffect(() => {
     const a = new Audio('/jump.mp3');
     a.preload = 'auto';
@@ -33,7 +33,7 @@ export default function JumpGame() {
     const a = soundRef.current;
     if (!a) return;
     try {
-      a.currentTime = 0; // restart on every jump (clip is long, so no overlapping)
+      a.currentTime = 0; // restart on every jump (1.5s clip)
       a.play().catch(() => {});
     } catch (e) {}
   }
